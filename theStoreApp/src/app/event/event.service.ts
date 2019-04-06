@@ -3,6 +3,9 @@ import { Time } from '@angular/common';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+
+const server = environment.server;
 
 // Needs: replacement for messageService--probably has to do with
 // logging?
@@ -20,19 +23,21 @@ export class Event {
   // Furthermore, "true" refers to being friendly to these food allergies.
   food_allergy_booleans: Array<Boolean>[5];
   food_desc: string;
+  // The Time class is an alias. It refers to a type containing
+  // a number that is the hour (called hours)
+  // and a number that is the minute (called minutes).
   food_start_time: Time;
   food_end_time: Time;
 }
 
 export class EventService {
-  private blogURL = 'api/events';
 
   constructor(private http: HttpClient) { }
 
   // change message to be more specific!
-  getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.blogURL).pipe(tap(_ => this.log('Fetched events!')),
-    catchError(this.handleError('getEvents', [])));
+  getActiveEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(server + '/events').pipe(tap(_ => this.log('Fetched events!')),
+    catchError(this.handleError('getActiveEvents', [])));
   }
 
   private log(message: string) {
