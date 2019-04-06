@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EventDisplayComponent } from './event-display/event-display.component';
+import { EventComponent } from './event.component';
 
 @NgModule({
   declarations: [],
@@ -8,7 +8,7 @@ import { EventDisplayComponent } from './event-display/event-display.component';
     CommonModule
   ],
   exports: [
-    EventDisplayComponent
+    EventComponent
   ],
 })
-export class EventDisplayModule { }
+export class EventModule { }
