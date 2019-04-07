@@ -34,14 +34,14 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  // change message to be more specific!
   getActiveEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(server + '/events').pipe(tap(_ => this.log('Fetched events!')),
+    return this.http.get<Event[]>(server + '/events').pipe(tap(_ => this.log('Fetched all active events!')),
     catchError(this.handleError('getActiveEvents', [])));
   }
 
+  // Stephen: For now, I have moved the messages to the console for the sake of testing.
   private log(message: string) {
-    // this.messageService.add(`EventService: ${message}`);
+    console.log(`EventService: ${message}`);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
