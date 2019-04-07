@@ -1,3 +1,20 @@
-<p>
-  event works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Events
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let event of events">
+      <ion-label [name]="event.event_name" slot="start"></ion-label>
+      <div class="item-note" slot="end">
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
