@@ -7,10 +7,6 @@ import { environment } from '../../environments/environment';
 
 const server = environment.server;
 
-@Injectable({
-  providedIn: 'root'
-})
-
 export class Event {
   event_creator: string;
   event_date: Date;
@@ -27,6 +23,9 @@ export class Event {
   food_end_time: Time;
 }
 
+@Injectable({
+  providedIn: 'root'
+})
 export class EventService {
 
   constructor(private http: HttpClient) { }
