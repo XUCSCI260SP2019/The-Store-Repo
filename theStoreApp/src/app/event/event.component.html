@@ -12,7 +12,7 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let event of events">
-      <ion-label [name]="event.event_name" slot="start"></ion-label>
+      <ion-label slot="start">{{event.event_name}}</ion-label>
       <div class="item-note" slot="end">
       </div>
     </ion-item>

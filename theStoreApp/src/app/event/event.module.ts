@@ -4,9 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { EventComponent } from './event.component';
+import { EventService } from './event.service';
 
 @NgModule({
-  declarations: [EventComponent],
+  declarations: [
+    EventComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -19,7 +22,11 @@ import { EventComponent } from './event.component';
     ])
   ],
   exports: [
-    EventComponent
+    EventComponent,
+  ],
+  providers:
+  [
+    EventService
   ],
 })
 export class EventModule { }

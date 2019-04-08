@@ -2,13 +2,10 @@ import { Injectable } from '@angular/core';
 import { Time } from '@angular/common';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 const server = environment.server;
-
-// Needs: replacement for messageService--probably has to do with
-// logging?
 
 @Injectable({
   providedIn: 'root'
