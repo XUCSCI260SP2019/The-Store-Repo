@@ -23,6 +23,8 @@ export class Event {
   food_end_time: Time;
 }
 
+// For injectable items, the class that is injected into must be directly adjacent with the
+// injectable decorator.
 @Injectable({
   providedIn: 'root'
 })

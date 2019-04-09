@@ -18,6 +18,6 @@ export class EventComponent implements OnInit {
   }
 
   getActiveEvents(): void {
-    this.eService.getActiveEvents().subscribe(events => this.events = events);
+    this.eService.getActiveEvents().subscribe((active_events: Event[]) => this.events = active_events);
   }
 }
