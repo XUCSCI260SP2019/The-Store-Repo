@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-
-import { ListPage } from './list.page';
+import { EventComponent } from './event.component';
+import { EventService } from './event.service';
 
 @NgModule({
+  declarations: [
+    EventComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -14,10 +17,16 @@ import { ListPage } from './list.page';
     RouterModule.forChild([
       {
         path: '',
-        component: ListPage
+        component: EventComponent,
       }
     ])
   ],
-  declarations: [ListPage]
+  exports: [
+    EventComponent,
+  ],
+  providers:
+  [
+    EventService
+  ],
 })
-export class ListPageModule {}
+export class EventModule { }
