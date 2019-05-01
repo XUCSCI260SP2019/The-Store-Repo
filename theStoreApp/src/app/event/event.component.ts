@@ -27,10 +27,11 @@ export class EventComponent implements OnInit {
     h_friendly: Boolean, k_friendly: Boolean,
     vgn_friendly: Boolean, vgtrn_friendly: Boolean,
     f_desc: string, f_start_time: Time, f_end_time: Time): void {
-    let newEvent: Event = {
+    const newEvent: Event = {
       event_creator: ev_creator,
       event_date: ev_date,
       event_desc: ev_desc,
+      event_id: this.eService.getEventCount(),
       event_name: ev_name,
       food_desc: f_desc,
       food_start_time: f_start_time,

@@ -5,6 +5,7 @@ export class Event {
     event_date: Date;
     event_desc: string;
     event_name: string;
+    event_id: number;
     food_desc: string;
     // The Time class is an alias. It refers to a type containing
     // a number that is the hour (called hours)

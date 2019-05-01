@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Event } from './event';
+import { ObservableMessage } from '../shared/observableMessage.model';
 
 const server = environment.server;
 
@@ -27,11 +28,32 @@ export class EventService {
     catchError(this.handleError('getActiveEvents', [])));
   }
 
-  // What do we want the return type to be here? It seems to insist on "any[]"?
-  postNewEvent(newEvent: Event): Observable<any[] | Event> {
-    // should there be a new URL related to this?
-    return this.http.post<Event>(server + '/events', newEvent, httpOptions).pipe(tap(_ => this.log('Posted a new event!')),
-    catchError(this.handleError('postNewEvents', [])));
+  // [NOTE]: the return is an observable. it could be a Boolean or a Message class that I create.
+  // See Mr. Fisher's frontend work.
+  postNewEvent(newEvent: Event): Observable<ObservableMessage> {
+    // [NOTE]: should there be a new URL related to this?
+    const oMsg: ObservableMessage = { success: false, success_message: '' };
+    return this.http.post<Event>(server + '/events',
+    newEvent,
+    httpOptions).pipe(
+        map(_ => {
+          oMsg.success = true;
+          oMsg.success_message = 'New event successfully posted!';
+          return oMsg; }),
+          catchError((err: HttpErrorResponse) => {
+            if(err.error instanceof Error) {
+              oMsg.success_message = err.error.message;
+            } else {
+              oMsg.success_message = err.error.status + ': ' + err.error.message;
+            }
+            return of(oMsg);
+          }));
+  }
+
+  // [NOTE]: This seems a little clunky, but it can work. Could it be better?
+  getEventCount(): number {
+    const oMsg: ObservableMessage = { success: false, success_message: '' };
+    return parseInt(this.http.get<number>(server + '/events').toPromise().toString(), 10);
   }
 
   // Messages currently go to the console for the sake of testing.
