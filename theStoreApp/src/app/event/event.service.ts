@@ -50,12 +50,6 @@ export class EventService {
           }));
   }
 
-  // [NOTE]: This seems a little clunky, but it can work. Could it be better?
-  getEventCount(): number {
-    const oMsg: ObservableMessage = { success: false, success_message: '' };
-    return parseInt(this.http.get<number>(server + '/events').toPromise().toString(), 10);
-  }
-
   // Messages currently go to the console for the sake of testing.
   private log(message: string) {
     console.log(`EventService: ${message}`);
