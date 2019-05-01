@@ -44,8 +44,10 @@ export class EventComponent implements OnInit {
       halal_friendly: h_friendly,
       kosher_friendly: k_friendly,
       vegan_friendly: vgn_friendly,
-      vegetarian_friendly: vgtrn_friendly,
-    }
-    this.eService.postNewEvent(newEvent);
+      vegetarian_friendly: vgtrn_friendly
+    };
+    this.eService.postNewEvent(newEvent).subscribe(
+      () => this.getActiveEvents()
+    );
   }
 }
