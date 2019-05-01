@@ -11,7 +11,7 @@ import { Time } from '@angular/common';
 
 export class EventComponent implements OnInit {
   events: Event[];
-  private nextEvent: number;
+  // private nextEvent: number;
 
   constructor(private eService: EventService) { }
 
@@ -22,7 +22,7 @@ export class EventComponent implements OnInit {
   getActiveEvents(): void {
     this.eService.getActiveEvents().subscribe((active_events: Event[]) => {
       this.events = active_events;
-      this.nextEvent = active_events.length + 1;
+      // this.nextEvent = active_events.length + 1;
     });
   }
 
@@ -35,7 +35,7 @@ export class EventComponent implements OnInit {
       event_creator: ev_creator,
       event_date: ev_date,
       event_desc: ev_desc,
-      event_id: this.nextEvent,
+      event_id: parseInt(this.eService.getEventCount().toString(), 10), // this.nextEvent,
       event_name: ev_name,
       food_desc: f_desc,
       food_start_time: f_start_time,
