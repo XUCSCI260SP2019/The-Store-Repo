@@ -34,9 +34,6 @@
             "styles": [
               {
                 "input": "src/theme/variables.scss"
-              },
-              {
-                "input": "src/global.scss"
               }
             ],
             "scripts": [],
