@@ -24,14 +24,14 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   getActiveEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(server + '/events').pipe(tap(_ => this.log('Fetched all active events!')),
+    return this.http.get<Event[]>(server + '/events').pipe(tap(_ =>
+      this.log('Fetched all active events.')),
     catchError(this.handleError('getActiveEvents', [])));
   }
 
   postNewEvent(newEvent: Event): Observable<ObservableMessage> {
-    // [NOTE]: should there be a new URL related to this?
     const oMsg: ObservableMessage = { success: false, success_message: '' };
-    return this.http.post<Event>(server + '/events',
+    return this.http.post<Event>(server + '/events/create',
     newEvent,
     httpOptions).pipe(
         map(_ => {
