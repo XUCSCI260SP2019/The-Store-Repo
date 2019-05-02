@@ -16,7 +16,8 @@ export class EventComponent implements OnInit {
   constructor(private eService: EventService) { }
 
   ngOnInit() {
-    this.getActiveEvents();
+    this.getTemplateEvent();
+    // this.getActiveEvents();
   }
 
   getActiveEvents(): void {
@@ -25,6 +26,25 @@ export class EventComponent implements OnInit {
       // this.nextEvent = active_events.length + 1;
     });
   }
+
+  // this is a mock get() item simply for display
+  getTemplateEvent(): void {
+    this.events = [];
+    this.events.push({
+      creatorEmail: 'angiekneflin@xavier.edu',
+      eventDate: new Date(2019, 5, 5),
+      eventDesc: 'This club is celebrating its anniversary with food!',
+      eventName: 'Serious Business Dinner Club Anniversary',
+      eventID: 0,
+      foodDesc: 'It\'s a fancy steak dinner.',
+      startTime: { hours: 19, minutes: 0 },
+      endTime: { hours: 22, minutes: 45 },
+      glutenFree: false,
+      halal: false,
+      kosher: false,
+      vegan: false,
+      vegetarian: false, });
+    }
 
   postNewEvent(ev_creator: string, ev_date: Date,
     ev_desc: string, ev_name: string, gf_friendly: Boolean,
