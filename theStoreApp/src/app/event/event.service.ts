@@ -24,16 +24,14 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   getActiveEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(server + '/events').pipe(tap(_ => this.log('Fetched all active events!')),
+    return this.http.get<Event[]>(server + '/events').pipe(tap(_ =>
+      this.log('Fetched all active events.')),
     catchError(this.handleError('getActiveEvents', [])));
   }
 
-  // [NOTE]: the return is an observable. it could be a Boolean or a Message class that I create.
-  // See Mr. Fisher's frontend work.
   postNewEvent(newEvent: Event): Observable<ObservableMessage> {
-    // [NOTE]: should there be a new URL related to this?
     const oMsg: ObservableMessage = { success: false, success_message: '' };
-    return this.http.post<Event>(server + '/events',
+    return this.http.post<Event>(server + '/events/create',
     newEvent,
     httpOptions).pipe(
         map(_ => {
@@ -48,6 +46,11 @@ export class EventService {
             }
             return of(oMsg);
           }));
+  }
+
+  getEventCount(): Promise<number> {
+    // [NOTE]: will likely want some error-catching in here.
+    return this.http.get<number>(server + '/events').toPromise();
   }
 
   // Messages currently go to the console for the sake of testing.

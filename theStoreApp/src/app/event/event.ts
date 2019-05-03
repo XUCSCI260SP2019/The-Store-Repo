@@ -1,21 +1,21 @@
 import { Time } from '@angular/common';
 
 export class Event {
-    event_creator: string;
-    event_date: Date;
-    event_desc: string;
-    event_name: string;
-    event_id: number;
-    food_desc: string;
+    creatorEmail: string;
+    eventDate: Date;
+    eventDesc: string;
+    eventName: string;
+    eventID: number;
+    foodDesc: string;
     // The Time class is an alias. It refers to a type containing
     // a number that is the hour (called hours)
     // and a number that is the minute (called minutes).
-    food_start_time: Time;
-    food_end_time: Time;
+    startTime: Time;
+    endTime: Time;
     // For the items below, "true" refers to being friendly to these food allergies.
-    gluten_free_friendly: Boolean;
-    halal_friendly: Boolean;
-    kosher_friendly: Boolean;
-    vegan_friendly: Boolean;
-    vegetarian_friendly: Boolean;
+    glutenFree: Boolean;
+    halal: Boolean;
+    kosher: Boolean;
+    vegan: Boolean;
+    vegetarian: Boolean;
 }
