@@ -8,7 +8,6 @@ import { Time } from '@angular/common';
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.scss'],
 })
-
 export class EventComponent implements OnInit {
   events: Event[];
   // private nextEvent: number;
