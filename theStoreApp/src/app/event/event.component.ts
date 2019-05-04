@@ -59,7 +59,7 @@ export class EventComponent implements OnInit {
     false, true, true, false, false, 'The meal consists of a variety of kinds of sushi.',
     { hours: 11, minutes: 0 }, { hours: 13, minutes: 30 });
     this.postNewEvent('stephenbothwell@xavier.edu', new Date(2019, 4, 3),
-    'A second pizza party! Woohoo!', 'Super Pizza', false, true, true, true, true,
+    'A second pizza party! Awesome!', 'Super Pizza', false, true, true, true, true,
     'There will be a variety of kinds of pizza for various diets.', { hours: 12, minutes: 45 },
     { hours: 14, minutes: 45 });
   }

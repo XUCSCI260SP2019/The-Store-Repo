@@ -31,9 +31,8 @@ export class EventService {
 
   postNewEvent(newEvent: Event): Observable<ObservableMessage> {
     const oMsg: ObservableMessage = { success: false, success_message: '' };
-    return this.http.post<Event>(server + '/events/create', newEvent,
-    httpOptions).pipe(
-        map(_ => {
+    return this.http.post<Event>(server + '/events/create', newEvent, httpOptions).pipe(
+        map(() => {
           oMsg.success = true;
           oMsg.success_message = 'New event successfully posted!';
           return oMsg; }),
