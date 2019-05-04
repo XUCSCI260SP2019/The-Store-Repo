@@ -31,8 +31,7 @@ export class EventService {
 
   postNewEvent(newEvent: Event): Observable<ObservableMessage> {
     const oMsg: ObservableMessage = { success: false, success_message: '' };
-    return this.http.post<Event>(server + '/events/create',
-    newEvent,
+    return this.http.post<Event>(server + '/events/create', newEvent,
     httpOptions).pipe(
         map(_ => {
           oMsg.success = true;

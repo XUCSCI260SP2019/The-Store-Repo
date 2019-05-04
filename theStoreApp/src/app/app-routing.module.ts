@@ -11,10 +11,10 @@ const routes: Routes = [
     path: 'home',
     loadChildren: './home/home.module#HomePageModule'
   },
-  {
-    path: 'events',
-    loadChildren: './event/event.module#EventModule'
-  }
+  // {
+    // path: 'events',
+    // loadChildren: './event/event.module#EventModule'
+  // }
 ];
 
 @NgModule({
