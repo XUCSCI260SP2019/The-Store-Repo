@@ -49,7 +49,9 @@ export class EventComponent implements OnInit {
       vegan: vgn_friendly,
       vegetarian: vgtrn_friendly,
     };
-    this.eService.postNewEvent(newEvent);
+    this.eService.postNewEvent(newEvent).subscribe(
+      msg => console.log(msg)
+    );
   }
 
   mockPosts() {
