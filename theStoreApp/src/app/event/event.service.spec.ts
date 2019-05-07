@@ -14,7 +14,7 @@ describe('EventService', () => {
     console.log('Tested getActiveEvents().');
     service.getActiveEvents().subscribe(newEvents => {
     expect(newEvents).toBeTruthy();
-    // is that the best predicate for testing? Could this be more specific?
+    // Is that the best predicate for testing? Could this be more specific?
     done();
     });
   });
