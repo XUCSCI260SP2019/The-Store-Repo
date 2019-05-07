@@ -4,16 +4,16 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'the-store-home',
     pathMatch: 'full'
   },
   {
-    path: 'home',
+    path: 'the-store-home',
     loadChildren: './home/home.module#HomePageModule'
   },
   {
-    path: 'events',
-    loadChildren: './event/event.module#EventModule'
+    path: 'events-calendar',
+    loadChildren: './list/list.module#ListPageModule'
   }
 ];
 
