@@ -1,11 +1,11 @@
 import { Time } from '@angular/common';
 
-export class Event {
+export interface Event {
     creatorEmail: string;
     eventDate: Date;
     eventDesc: string;
     eventName: string;
-    eventID: number;
+    readonly eventID?: number;
     foodDesc: string;
     // The Time class is an alias. It refers to a type containing
     // a number that is the hour (called hours)

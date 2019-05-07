@@ -10,22 +10,17 @@ import { Time } from '@angular/common';
 })
 export class EventComponent implements OnInit {
   events: Event[];
-  private nextEvent: number;
 
   constructor(private eService: EventService) { }
 
   ngOnInit() {
     this.mockPosts();
     this.getActiveEvents();
-    this.eService.getEventCount().then(
-      (count: number) => this.nextEvent = count
-    );
   }
 
   getActiveEvents(): void {
     this.eService.getActiveEvents().subscribe((active_events: Event[]) => {
       this.events = active_events;
-      // this.nextEvent = active_events.length + 1;
     });
   }
 
@@ -38,7 +33,6 @@ export class EventComponent implements OnInit {
       creatorEmail: ev_creator,
       eventDate: ev_date,
       eventDesc: ev_desc,
-      eventID: this.nextEvent,
       eventName: ev_name,
       foodDesc: f_desc,
       startTime: f_start_time,

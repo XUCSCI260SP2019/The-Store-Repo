@@ -11,11 +11,10 @@ const server = environment.server;
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': '...' // fill in!
+    'Access-Control-Allow-Origin': '*',
   })
 };
 
-// @Injectable is a decorator, so it must be adjacent to the class definition.
 @Injectable({
   providedIn: 'root'
 })
@@ -37,7 +36,7 @@ export class EventService {
           oMsg.success_message = 'New event successfully posted!';
           return oMsg; }),
           catchError((err: HttpErrorResponse) => {
-            if(err.error instanceof Error) {
+            if (err.error instanceof Error) {
               oMsg.success_message = err.error.message;
             } else {
               oMsg.success_message = err.error.status + ': ' + err.error.message;
@@ -48,10 +47,13 @@ export class EventService {
 
   getEventCount(): Promise<number> {
     // [NOTE]: will likely want some error-catching in here.
+    // [NOTE 2]: may still be useful, but isn't currently used.
     return this.http.get<number>(server + '/events').toPromise();
   }
 
-  // Messages currently go to the console for the sake of testing.
+  // [NOTE]: Messages currently go to the console for the sake of testing.
+  // [NOTE 2]: There are two error helper-methods down here.
+  // Can they be simplified into one?
   private log(message: string) {
     console.log(`EventService: ${message}`);
   }
